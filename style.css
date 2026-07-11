@@ -6,7 +6,7 @@
 }
 
 body{
-    background-image: url('https://loremflickr.com/1600/900/nature,landscape');
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -31,21 +31,14 @@ body{
 
 
 .big-box{
-    background-image:
-    radial-gradient(circle at 20% 20%, rgb(0, 0, 0), transparent 100%),
-    radial-gradient(circle at 20% 20%, rgba(12, 206, 255, 0.521), transparent 35%),
-    radial-gradient(circle at 80% 80%, rgba(234, 51, 179, 0.438), transparent 40%),
-    linear-gradient(
-        180deg,
-        #2d7fd079 0%,
-        #ff000050 60%,
-        #00ffee8c 100%
-    );
+    background-color: rgba(0, 0, 0, 0.61);
+    backdrop-filter: blur(3px);
     width: 450px;
     padding: 20px;
     border-radius: 20px;
-    box-shadow: 10px 10px 60px black;
+    box-shadow: 10px 10px 60px rgb(0, 0, 0);
 }
+
 
 .input-city{
     margin-top: 20px;
@@ -78,7 +71,7 @@ body{
 }
 
 .button:hover{
-    background-color: #7c7c7c;
+    background-color: #dadada;
     transform: scale(1.1);
 }
 

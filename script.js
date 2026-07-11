@@ -3,7 +3,7 @@ let chaveGroq = "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"
 
 function aplicarBackground(url) {
     document.body.style.setProperty('--bg-image', `url("${url}")`);
-}
+};
 
 async function buttonClick() {
     let cidade = document.querySelector(".input-city").value
@@ -13,6 +13,7 @@ async function buttonClick() {
     let respostaServidor = await fetch(endereço)
     let dadosJson = await respostaServidor.json()
     console.log(dadosJson)
+
     
 
     caixa.innerHTML = `
@@ -23,6 +24,23 @@ async function buttonClick() {
         <button class="botao-ia" onclick="lookSuggestion()" >Sugestão de roupa</button>
         <p class="resp-ia" ></p>
         `
+    
+    offSetCity = dadosJson.timezone
+    showTime();
+}
+
+async function showTime(){
+    let caixa = document.querySelector(".date-time")
+    let agora = new Date()
+    let utc = agora.getTime() + (agora.getTimezoneOffset() * 60000)
+    let hourscity = new Date(utc + (offSetCity * 1000))
+
+    caixa.innerHTML = `
+        <p>${hourscity.toLocaleTimeString("pt-BR")}</p>
+        <p>${hourscity.toLocaleDateString("pt-BR")} </p>
+    `
+    setInterval(showTime, 1000)
+
 };
 
 function voiceDetection(){
@@ -30,11 +48,10 @@ function voiceDetection(){
     recognition.lang = "pt-BR"
     recognition.start()
 
-    recognition.onresult() = function(evento){
+    recognition.onresult = function (evento){
         let textTranscript = evento.results[0][0].transcript
         document.querySelector(".input-city").value = textTranscript
         buttonClick()
-
     }
 };
 
@@ -59,7 +76,7 @@ async function lookSuggestion(){
                     "content": `Me dê sugestão de qual roupa usar hoje.
                     Estou na cidade de: ${cidade}, a tmperatura atual é de: ${temperatura}°C
                     e a umidade está em: ${umidade}.
-                    Me dê sugestões em duas frases curtas.`
+                    Me dê sugestões em duas frases curtas.Seja criativo e natural nas respostas`
                 },
             ]
         })
@@ -70,3 +87,4 @@ async function lookSuggestion(){
     console.log(dados)
 
 };
+
