@@ -31,7 +31,17 @@ body{
 
 
 .big-box{
-    background-color: rgba(0, 0, 0, 0.61);
+    position: relative;
+    background-image:
+    radial-gradient(circle at 20% 20%, rgba(12, 206, 255, 0.192), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(234, 51, 179, 0.226), transparent 50%),
+    linear-gradient(
+        180deg,
+        #2d7fd042 10%,
+        #ff00002d 70%,
+        #00ffee3b 90%  
+    );
+
     backdrop-filter: blur(3px);
     width: 450px;
     padding: 20px;
@@ -82,6 +92,7 @@ body{
 
 .medium-box{
     margin-top: 30px;
+    padding: 10px;
 }
 
 .cidade{
@@ -108,17 +119,19 @@ body{
     margin-top: 20px;
     padding: 12px 20px;
     font-size: 16px;
-    color: rgb(0, 0, 0);
-    background-color: rgb(127, 197, 255);
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 55, 59);
     border: none;  
     transition: 0.3s;
     cursor: pointer;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.685);
+
 }
 
 .botao-ia:active{
     transform: scale(0.95);
     opacity: 0.9;
+
 }
 
 .resp-ia{
@@ -126,7 +139,7 @@ body{
     margin-top: 15px;
     font-size: 14px;
     line-height: 1.5;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.685);
+    text-shadow: 6px 5px 8px rgb(0, 0, 0);
 }
 
 
@@ -174,17 +187,16 @@ body::after{
 
 .clock{
     display: none;
-    top: 50%;
+    top: 25%;
     left: 50%;
-    width: 300px;
-    height: 300px;
-    position: relative;
-    align-items: center;
-    justify-content: center;
+    width: 150px;
+    height: 150px;
+    transform: scale(0.9);
+    position: absolute;
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
-    backdrop-filter: blur(15px);
-    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -200,8 +212,8 @@ body::after{
     left: 50%;
     transform-origin: bottom center;
     transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
+    width: 7px;
+    height: 7px;
     background: #ffffff;
     border-radius: 50%;
     z-index: 15;
@@ -246,8 +258,8 @@ body::after{
 .hr::before{
     content: "";
     position: absolute;
-    width: 8px;
-    height: 80px;
+    width: 4px;
+    height: 25px;
     background-color: #f00;
     border-radius: 10px;
     z-index: 10;
@@ -260,8 +272,8 @@ body::after{
 
     content: "";
     position: absolute;
-    width: 4px;
-    height: 90px;
+    width: 2.5px;
+    height: 35px;
     background-color: #0f0;
     z-index: 11;
     border-radius: 8px;
@@ -273,12 +285,27 @@ body::after{
 .sec::before{
     content: "";
     position: absolute;
-    width: 2px;
-    height: 130px;
+    width: 1px;
+    height: 65px;
     background-color: #fff;
     z-index: 12;
     border-radius: 4px;
     left: 50%;
     bottom: 50%;
     transform: translateX(-50%);
+}
+
+.big-box .hr-box{
+    display: none;
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    inset: 0;
+    top: 15px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    font-size: 10px;
+    color: white;
+
 }

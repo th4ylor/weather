@@ -7,19 +7,22 @@ function aplicarBackground(url) {
 
 async function buttonClick() {
     let cidade = document.querySelector(".input-city").value
-    let caixa = document.querySelector(".medium-box")
+    const caixa = document.querySelector(".medium-box")
     let apiKey = "f7fc4ccec2e0cc8d47fa3f418178de34"
     let endereço = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
     let respostaServidor = await fetch(endereço)
     let dadosJson = await respostaServidor.json()
     console.log(dadosJson)
-    const clock = document.getElementById("clock")
+    let clock = document.getElementById("clock")
+    let hrbox = document.getElementById("hr-box")
     
     const hr = document.getElementById("hr")
     const min = document.getElementById("min")
     const sec = document.getElementById("sec")
 
     clock.style.display = "flex"
+    hrbox.style.display = "flex"
+    
 
     rotation = (target, val) => {
         target.style.transform = `rotate(${val}deg)`
@@ -55,15 +58,17 @@ async function buttonClick() {
     offSetCity = dadosJson.timezone
     showTime();
 }
+buttonClick()
 
 async function showTime(){
     let caixa = document.querySelector(".date-time")
     let agora = new Date()
     let utc = agora.getTime() + (agora.getTimezoneOffset() * 60000)
     let hourscity = new Date(utc + (offSetCity * 1000))
+    const caixahr = document.getElementById("hr-box")
 
-    caixa.innerHTML = `
-        <p>${hourscity.toLocaleTimeString("pt-BR")}</p>
+    caixahr.innerHTML = `
+        <p>${hourscity.toLocaleTimeString("pt-br")}</p>
         <p>${hourscity.toLocaleDateString("pt-BR")} </p>
     `
     setInterval(showTime, 1000)
