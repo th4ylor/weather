@@ -189,8 +189,8 @@ body::after{
     display: none;
     top: 25%;
     left: 50%;
-    width: 150px;
-    height: 150px;
+    width: 90px;
+    height: 90px;
     transform: scale(0.9);
     position: absolute;
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -212,8 +212,8 @@ body::after{
     left: 50%;
     transform-origin: bottom center;
     transform: translate(-50%, -50%);
-    width: 7px;
-    height: 7px;
+    width: 5px;
+    height: 5px;
     background: #ffffff;
     border-radius: 50%;
     z-index: 15;
@@ -258,8 +258,8 @@ body::after{
 .hr::before{
     content: "";
     position: absolute;
-    width: 4px;
-    height: 25px;
+    width: 2.5px;
+    height: 17px;
     background-color: #f00;
     border-radius: 10px;
     z-index: 10;
@@ -272,8 +272,8 @@ body::after{
 
     content: "";
     position: absolute;
-    width: 2.5px;
-    height: 35px;
+    width: 2px;
+    height: 26px;
     background-color: #0f0;
     z-index: 11;
     border-radius: 8px;
@@ -286,7 +286,7 @@ body::after{
     content: "";
     position: absolute;
     width: 1px;
-    height: 65px;
+    height: 30px;
     background-color: #fff;
     z-index: 12;
     border-radius: 4px;
