@@ -13,67 +13,84 @@ async function buttonClick() {
     let respostaServidor = await fetch(endereço)
     let dadosJson = await respostaServidor.json()
     console.log(dadosJson)
-    let clock = document.getElementById("clock")
-    let hrbox = document.getElementById("hr-box")
-    
-    const hr = document.getElementById("hr")
-    const min = document.getElementById("min")
-    const sec = document.getElementById("sec")
-
-    clock.style.display = "flex"
-    hrbox.style.display = "flex"
-    
-
-    rotation = (target, val) => {
-        target.style.transform = `rotate(${val}deg)`
-    }
-    clock = () => {
-        let date = new Date()
-        let hh = (date.getHours() % 12) + date.getMinutes() / 59
-        let mm = date.getMinutes()
-        let ss = date.getSeconds()
-
-        hh *= 30
-        mm *= 6
-        ss *= 6
-
-        rotation(hr, hh)
-        rotation(min, mm)
-        rotation(sec, ss)
-
-        setTimeout(clock,500)
-    }
-    window.onload = clock()
-    
+    let offSetCity = dadosJson.timezone
 
     caixa.innerHTML = `
-        <h2 class="cidade" >${dadosJson.name}</h2>
-        <p class="temp" >${Math.floor(dadosJson.main.temp)}°C</p>
+        <h2  style ="font-size:25px;" class="cidade" >${dadosJson.name}</h2>
+         
+        <p style ="font-size:35px;" class="temp" >${Math.floor(dadosJson.main.temp)}°C</p>
         <img class="icone" src="https://openweathermap.org/payload/api/media/file/${dadosJson.weather[0].icon}.png">
         <p class="umidade" >Umidade: ${dadosJson.main.humidity}</p>
         <button class="botao-ia" onclick="lookSuggestion()" >Sugestão de roupa</button>
         <p class="resp-ia" ></p>
         `
+    function showTime() {
+        let clock = document.getElementById("clock")
+        let hrbox = document.getElementById("hr-box")
+        let date = new Date()
+        let utc = date.getTime() + (date.getTimezoneOffset() * 60000)
+        let hourscity = new Date(utc + (offSetCity * 1000))
+        console.log("1-"+ hourscity)
+
+        let caixahr = document.querySelector("hr-box")
+        const hr = document.getElementById("hr")
+        const min = document.getElementById("min")
+        const sec = document.getElementById("sec")
+
+        clock.style.display = "flex"
+        hrbox.style.display = "flex"
+
+
+        rotation = (target, val) => {
+            target.style.transform = `rotate(${val}deg)`
+        }
+        clock = () => {
+            let hh = (date.getHours() % 12) + date.getMinutes() / 59
+            let mm = date.getMinutes()
+            let ss = date.getSeconds()
+
+            hh *= 30
+            mm *= 6
+            ss *= 6
+
+            rotation(hr, hh)
+            rotation(min, mm)
+            rotation(sec, ss)
+
+            setTimeout(clock,500)
+        }
+        
+        console.log("teste"+ clock)
+
+        let dayweek = date.toLocateDateString("pt-br", {
+            weekday: "long"
+        })
+        console.log("2-"+ dayweek)
+
+        let datex = date.toLocaleDateString("pt-BR", {
+            day: "z-digit",
+            month: "long",
+            year: "numeric"
+        })
+        console.log("3-"+ datex)
+
+        let hours = date.toLocateTimeString("pt-BR")
+        console.log("4-"+ hours)
+
+
+        caixahr.innerHTML = `
+            <p class="dia">${dayweek} </p>
+            <p class="data">${datex} </p>
+            <h2 class="hora">${hours} </h2>
+        `
+        setInterval(showTime, 1000)
+        window.onload = clock()
+
+    }
+    showTime()
     
-    offSetCity = dadosJson.timezone
-    showTime();
 }
 buttonClick()
-
-async function showTime(){
-    let caixa = document.querySelector(".date-time")
-    let agora = new Date()
-    let utc = agora.getTime() + (agora.getTimezoneOffset() * 60000)
-    let hourscity = new Date(utc + (offSetCity * 1000))
-    const caixahr = document.getElementById("hr-box")
-
-    caixahr.innerHTML = `
-        <p>${hourscity.toLocaleTimeString("pt-br")}</p>
-        <p>${hourscity.toLocaleDateString("pt-BR")} </p>
-    `
-    setInterval(showTime, 1000)
-
-};
 
 function voiceDetection(){
     let recognition = new window.webkitSpeechRecognition()
@@ -106,9 +123,9 @@ async function lookSuggestion(){
                 {
                     "role": "user",
                     "content": `Me dê sugestão de qual roupa usar hoje.
-                    Estou na cidade de: ${cidade}, a tmperatura atual é de: ${temperatura}°C
+                    Estou na cidade de: ${cidade}, a temperatura atual é de: ${temperatura}°C
                     e a umidade está em: ${umidade}.
-                    Me dê sugestões em duas frases curtas.Seja criativo e natural nas respostas`
+                    Me dê sugestões em duas frases curtas.`
                 },
             ]
         })
@@ -119,4 +136,3 @@ async function lookSuggestion(){
     console.log(dados)
 
 };
-
