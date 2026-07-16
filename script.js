@@ -1,5 +1,5 @@
 
-const chaveGroq = "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"
+const chaveGroq = "gsk_OpFaraAeW5uRedO22kDWGdyb3FYEFXOUWlIDFae6MTpqbomi0Z" //exemplo
 const caixa = document.querySelector(".medium-box")
 
 function aplicarBackground(url) {
