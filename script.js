@@ -1,13 +1,14 @@
 
-let chaveGroq = "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"
+const chaveGroq = "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"
+const caixa = document.querySelector(".medium-box")
 
 function aplicarBackground(url) {
     document.body.style.setProperty('--bg-image', `url("${url}")`);
 };
 
 async function buttonClick() {
-    let cidade = document.querySelector(".input-city").value
-    const caixa = document.querySelector(".medium-box")
+    const cidade = document.querySelector(".input-city").value
+    
     let apiKey = "f7fc4ccec2e0cc8d47fa3f418178de34"
     let endereço = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
     let respostaServidor = await fetch(endereço)
@@ -17,7 +18,6 @@ async function buttonClick() {
 
     caixa.innerHTML = `
         <h2  style ="font-size:25px;" class="cidade" >${dadosJson.name}</h2>
-         
         <p style ="font-size:35px;" class="temp" >${Math.floor(dadosJson.main.temp)}°C</p>
         <img class="icone" src="https://openweathermap.org/payload/api/media/file/${dadosJson.weather[0].icon}.png">
         <p class="umidade" >Umidade: ${dadosJson.main.humidity}</p>
@@ -30,20 +30,20 @@ async function buttonClick() {
         let date = new Date()
         let utc = date.getTime() + (date.getTimezoneOffset() * 60000)
         let hourscity = new Date(utc + (offSetCity * 1000))
-        console.log("1-"+ hourscity)
+        //console.log("1-"+ hourscity)
 
-        let caixahr = document.getElementById("hr-box")
+        const caixahr = document.getElementById("hr-box")
         const hr = document.getElementById("hr")
         const min = document.getElementById("min")
         const sec = document.getElementById("sec")
 
         clock.style.display = "flex"
-        hrbox.style.display = "flex"
-
+        hrbox.style.display = "grid"
 
         rotation = (target, val) => {
             target.style.transform = `rotate(${val}deg)`
         }
+
         clock = () => {
             let hh = (date.getHours() % 12) + date.getMinutes() / 59
             let mm = date.getMinutes()
@@ -60,27 +60,26 @@ async function buttonClick() {
             setTimeout(clock,500)
         }
         
-        console.log("teste"+ clock)
+        //console.log("teste"+ clock)
 
         let dayweek = date.toLocaleDateString("pt-br", {
             weekday: "long"
         })
-        console.log("2 -"+dayweek)
+        //console.log("2 -"+dayweek)
 
         let datex = date.toLocaleDateString("pt-BR", {
             day: "2-digit",
             month: "long",
             year: "numeric"
         })
-        console.log("3 -"+datex)
+        //console.log("3 -"+datex)
 
         let hours = date.toLocaleTimeString("pt-BR")
-        console.log("4 -"+hours)
+        //console.log("4 -"+hours)
 
 
         caixahr.innerHTML = `
-            <p class="dia">${dayweek} </p>
-            <p class="data">${datex} </p>
+            <p class="dia">${dayweek},${datex} </p>
             <h2 class="hora">${hours} </h2>
         `
         setInterval(showTime, 1000)
