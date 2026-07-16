@@ -32,7 +32,7 @@ async function buttonClick() {
         let hourscity = new Date(utc + (offSetCity * 1000))
         console.log("1-"+ hourscity)
 
-        let caixahr = document.querySelector("hr-box")
+        let caixahr = document.getElementById("hr-box")
         const hr = document.getElementById("hr")
         const min = document.getElementById("min")
         const sec = document.getElementById("sec")
@@ -62,20 +62,20 @@ async function buttonClick() {
         
         console.log("teste"+ clock)
 
-        let dayweek = date.toLocateDateString("pt-br", {
+        let dayweek = date.toLocaleDateString("pt-br", {
             weekday: "long"
         })
-        console.log("2-"+ dayweek)
+        console.log("2 -"+dayweek)
 
         let datex = date.toLocaleDateString("pt-BR", {
-            day: "z-digit",
+            day: "2-digit",
             month: "long",
             year: "numeric"
         })
-        console.log("3-"+ datex)
+        console.log("3 -"+datex)
 
-        let hours = date.toLocateTimeString("pt-BR")
-        console.log("4-"+ hours)
+        let hours = date.toLocaleTimeString("pt-BR")
+        console.log("4 -"+hours)
 
 
         caixahr.innerHTML = `

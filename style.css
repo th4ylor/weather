@@ -298,15 +298,17 @@ body::after{
 .big-box .hr-box{
     display: none;
     position: absolute;
+
     padding-right: 10px;
     width: 10px;
     height: 20px;
-    inset: 0;
+
     top: 15px;
     bottom: 20px;
     left: 20px;
     right: 20px;
-    font-size: 10px;
+    font-size:60px;
     color: white;
+
 
 }
