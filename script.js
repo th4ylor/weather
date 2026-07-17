@@ -8,6 +8,10 @@ function aplicarBackground(url) {
 
 async function buttonClick() {
     const cidade = document.querySelector(".input-city").value
+    if (cidade.trim() === ""){
+        alert("Por favor, digite o nome de uma cidade.")
+    }
+    
     
     let apiKey = "f7fc4ccec2e0cc8d47fa3f418178de34"
     let endereço = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
@@ -17,11 +21,11 @@ async function buttonClick() {
     let offSetCity = dadosJson.timezone
 
     caixa.innerHTML = `
-        <h2  style ="font-size:25px;" class="cidade" >${dadosJson.name}</h2>
-        <p style ="font-size:35px;" class="temp" >${Math.floor(dadosJson.main.temp)}°C</p>
+        <h2  style ="font-size:30px;" class="cidade" >${dadosJson.name} </h2>
+        <p style ="font-size: 60px; font-weight: 800; line-height: 1;" class="temp" >${Math.floor(dadosJson.main.temp)}°C</p>
         <img class="icone" src="https://openweathermap.org/payload/api/media/file/${dadosJson.weather[0].icon}.png">
         <p class="umidade" >Umidade: ${dadosJson.main.humidity}</p>
-        <button class="botao-ia" onclick="lookSuggestion()" >Sugestão de roupa</button>
+        <button class="botao-ia" onclick="lookSuggestion()" ><img style="filter:invert(100%);transform:translate(10%, 50%)"class="camisa" src="img/camisa.svg">Sugestão de roupa</button>
         <p class="resp-ia"></p>
         `
 
@@ -34,8 +38,10 @@ async function buttonClick() {
         let utc = date.getTime() + (date.getTimezoneOffset() * 60000)
         let hourscity = new Date(utc + (offSetCity * 1000))
         //console.log("1-"+ hourscity)
-
+        
+        const caixaclock = document.getElementById("hr-clock")
         const caixahr = document.getElementById("hr-box")
+
         const hr = document.getElementById("hr")
         const min = document.getElementById("min")
         const sec = document.getElementById("sec")
@@ -77,17 +83,25 @@ async function buttonClick() {
             month: "long",
             year: "numeric"
         })
-        let hours = date.toLocaleTimeString("pt-BR")
+        let hours = date.toLocaleTimeString("pt-BR", {
+            hour: "2-digit",
+            minute: "2-digit"
+        })
         //console.log("4 -"+hours)
+        let hoursclock = hourscity.toLocaleTimeString("pt-BR")
 
         //ADICIONANDO TEXTO NO HTML
         caixahr.innerHTML = `
-            <p class="dia">${dayweek},${datex} </p>
-            <h2 class="hora">${hours} </h2>
+            <p class="dia"> <img class="calendar" src="img/calendar-days.svg"> ${dayweek}, ${datex}</p>
+            <h2 class="hora">${hours}</h2>
         `
+        caixaclock.innerHTML = `
+            <h2 class="hora2">${hoursclock}</h2>
+        `;
         window.onload = clock()
-        setInterval(showTime, 1000)
+        
     }
+    setInterval(showTime, 1000)
     showTime()
     
 }

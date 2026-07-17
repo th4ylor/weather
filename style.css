@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Manrope", sans-serif;
 }
 
 body{
@@ -39,43 +41,60 @@ body{
         180deg,
         #2d7fd042 10%,
         #ff00002d 70%,
-        #00ffee3b 90%  
-    );
-
+        #00ffee3b 90%);
     backdrop-filter: blur(3px);
-    width: 500px;
+    width: 600px;
     padding: 20px;
     border-radius: 35px;
     box-shadow: 10px 10px 60px rgb(0, 0, 0);
 }
 
+.search-box{
+    border: none;
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+}
+.count-locate{
+    position: relative;
+    display:inline-block ;
+}
+
+.ico-locate {
+  position: absolute;
+  left: 13px;         
+  top: 50%;           
+  transform: translateY(-50%); 
+  width: 16px;        
+  height: 16px;
+  filter: invert(100%);
+}
 
 .input-city{
-    margin-top: 20px;
-    width: calc(100% - 250px);
-    position: absolute;
-    transform: translate(30%, -30% );
-    padding: 10px; 
-    border-radius: 20px;
-    outline: none;
+    border:none;
+    letter-spacing: 1px;
     font-size: 10px;
+    border-radius: 20px;
     background-color: #7c7c7c2b;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.685);
     color: white;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.349);
+    outline: none;
+    padding: 12px;
+    transition: all 0.4s ease;
+    width: 25vw;
+    padding-left: 40px;
 }
 
 .button{
-    margin-top: 20px;
+    border-radius: 20px;
     padding: 10px;
-    border-radius: 50%;
     border: none;
     background-color: #7c7c7c2b;
     cursor: pointer;
-    margin-left: 8px;
-    float: right;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-left: 5px;
     transition: all 0.4s ease;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.685);
 }
@@ -91,7 +110,7 @@ body{
 }
 
 .medium-box{
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 10px;
 }
 
@@ -110,14 +129,14 @@ body{
 
 .umidade{
     color: #fff;
-
 }
 
 .botao-ia{
+
     border-radius: 10px;
     width: 100%;
-    margin-top: 20px;
-    padding: 12px 20px;
+    margin-top: 10px;
+    padding: 12px 10px;
     font-size: 16px;
     color: rgb(255, 255, 255);
     background-color: rgb(0, 55, 59);
@@ -125,7 +144,6 @@ body{
     transition: 0.3s;
     cursor: pointer;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.685);
-
 }
 
 .botao-ia:active{
@@ -187,17 +205,16 @@ body::after{
 
 .clock{
     display: none;
-    top: 25%;
-    left: 50%;
-    width: 90px;
-    height: 90px;
-    transform: scale(0.9);
     position: absolute;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    top: 24%;
+    left: 60%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 140px;
+    border: 2px solid rgba(255,255,255,.1);
     border-radius: 50%;
     backdrop-filter: blur(20px);
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    background: rgba(0,0,0,.2);
 }
 
 .clock-img img{
@@ -295,15 +312,53 @@ body::after{
     transform: translateX(-50%);
 }
 
-.big-box .hr-box{
-    display: none;
+.big-box .hr-box {
+    letter-spacing: 1px;
     position: absolute;
     padding: 20px;
-    width: 50%;
-    height: 10%;
-
+    height: 20px;
+    width: 45%;
+    margin-left: 10px;
     font-size:10px;
     color: white;
     inset: 0;
+}
 
+.hr-box .hora {
+    font-size: 30px;
+}
+.hr-box .dia{
+    transform: translateX(-10px);
+}
+
+.hr-box .dia .calendar{
+    filter: invert(100%);
+    transform: scale(0.7) translate(5px, 10px);
+
+}
+
+.hora{
+    letter-spacing: -1px;
+    font-size: 30px;
+}
+
+.hr-clock{
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    padding: 5px;
+    border-radius: 15px;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.15);
+    text-align: center;
+}
+
+.hora2{
+
+    font-size: 25px;
+    color: #fff;
+    letter-spacing: -1px;
 }

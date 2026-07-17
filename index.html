@@ -8,29 +8,32 @@
 </head>
 <body>
     <div class="big-box">
-        <input class="input-city" type="text" placeholder="Digite o nome da cidade" value="Paris" >
-
-        <button id="button" class="button" onclick="voiceDetection()">
-            <img src="img/microfone.svg" alt="Microfone">
-        </button>
-
-        <button id="pesquisar" class="button" onclick="buttonClick()">
-            <img src="img/lupa.svg" alt="buscar">
-        </button>
-
+        <div class="search-box">
+            <div class="count-locate">
+                <img src="img/locate.svg" alt="locate" class="ico-locate"">
+                <input class="input-city" type="text" placeholder="Digite o nome da cidade" value="Paris" >
+            
+            </div>
+            <button id="button" class="button" onclick="voiceDetection()">
+                <img src="img/microfone.svg" alt="Microfone">
+            </button>
+            <button id="pesquisar" class="button" onclick="buttonClick()">
+                <img src="img/lupa.svg" alt="buscar">
+            </button>
+        </div>
         <div class="hr-box" id="hr-box">
             <p class="dia"></p>
+            <h2 class="hora"></h2>
+        
         </div>
 
         <div class="medium-box">
-
         </div>
 
         <div class="clock" id="clock">
             <div class="clock-img">
                 <img src="img/clock.png" alt="clock">
             </div>
-
             <div class="hours">
                 <span class="hr" id="hr"></span>
             </div>
@@ -39,16 +42,15 @@
             </div>
             <div class="seconds">
                 <span class="sec" id="sec"></span>
-
-            </div>
+            </div>  
+            
+            <div class="hr-clock" id="hr-clock">
                 
             </div>
-
-        </div>
-
         </div>
 
     </div>
+
 
     <script src="script.js"></script>
 </body>
