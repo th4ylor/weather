@@ -45,23 +45,23 @@ body{
     backdrop-filter: blur(3px);
     width: 500px;
     padding: 20px;
-    border-radius: 20px;
+    border-radius: 35px;
     box-shadow: 10px 10px 60px rgb(0, 0, 0);
 }
 
 
 .input-city{
     margin-top: 20px;
-    width: calc(100% - 100px);
+    width: calc(100% - 250px);
+    position: absolute;
+    transform: translate(30%, -30% );
     padding: 10px; 
     border-radius: 20px;
-    border: none;
     outline: none;
     font-size: 10px;
     background-color: #7c7c7c2b;
     color: white;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.685);
-   
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.349);
 }
 
 .button{
