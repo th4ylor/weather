@@ -25,7 +25,7 @@ async function buttonClick() {
         <p style ="font-size: 60px; font-weight: 800; line-height: 1;" class="temp" >${Math.floor(dadosJson.main.temp)}°C</p>
         <img class="icone" src="https://openweathermap.org/payload/api/media/file/${dadosJson.weather[0].icon}.png">
         <p class="umidade" >Umidade: ${dadosJson.main.humidity}</p>
-        <button class="botao-ia" onclick="lookSuggestion()" ><img style="filter:invert(100%);transform:translate(10%, 50%)"class="camisa" src="img/camisa.svg">Sugestão de roupa</button>
+        <button class="botao-ia" onclick="lookSuggestion()" ><img style="filter:invert(100%); transform:scale(0.7);" src="img/camisa.svg">Sugestão de roupa <img src="img/seta.svg" style="position: absolute; left: 95%; transform: translateX(-50%); filter:invert(100%)"></button>
         <p class="resp-ia"></p>
         `
 
@@ -34,9 +34,9 @@ async function buttonClick() {
         let hrbox = document.getElementById("hr-box")
 
         //HORARIO COM FUSO 
-        let date = new Date()
-        let utc = date.getTime() + (date.getTimezoneOffset() * 60000)
-        let hourscity = new Date(utc + (offSetCity * 1000))
+        const date = new Date()
+        const utc = date.getTime() + (date.getTimezoneOffset() * 60000)
+        const hourscity = new Date(utc + (offSetCity * 1000))
         //console.log("1-"+ hourscity)
         
         const caixaclock = document.getElementById("hr-clock")
@@ -53,9 +53,9 @@ async function buttonClick() {
         //ROTAÇAO DO PONTEIRO
         clock = () => {
             const now = new Date()
-            let hh = (now.getHours() % 12) + now.getMinutes() / 59
-            let mm = now.getMinutes()
-            let ss = now.getSeconds()
+            const hh = (now.getHours() % 12) + now.getMinutes() / 59
+            const mm = now.getMinutes()
+            const ss = now.getSeconds()
 
             hh *= 30
             mm *= 6
@@ -74,21 +74,21 @@ async function buttonClick() {
         }
 
         //MODO DE EXIBIÇÃO DAS HORAS E DATA
-        let dayweek = date.toLocaleDateString("pt-br", {
+        const dayweek = date.toLocaleDateString("pt-br", {
             weekday: "long"
         })
         //console.log("2 -"+dayweek)
-        let datex = date.toLocaleDateString("pt-BR", {
+        const datex = date.toLocaleDateString("pt-BR", {
             day: "2-digit",
             month: "long",
             year: "numeric"
         })
-        let hours = date.toLocaleTimeString("pt-BR", {
+        const hours = date.toLocaleTimeString("pt-BR", {
             hour: "2-digit",
             minute: "2-digit"
         })
         //console.log("4 -"+hours)
-        let hoursclock = hourscity.toLocaleTimeString("pt-BR")
+        //let hoursclock = hourscity.toLocaleTimeString("pt-BR")
 
         //ADICIONANDO TEXTO NO HTML
         caixahr.innerHTML = `
@@ -102,10 +102,11 @@ async function buttonClick() {
         
     }
     setInterval(showTime, 1000)
-    showTime()
+    
     
 }
-buttonClick()
+showTime()
+//buttonClick()
 //FUNCAO DE VOZ
 function voiceDetection(){
     let recognition = new window.webkitSpeechRecognition()
@@ -150,3 +151,4 @@ async function lookSuggestion(){
 };
 
 //One Dark Pro Night Flat - NOME DO TEMA PRA NÃO ESQUECER KSKSKS
+//Pagina dos icones https://lucide.dev/?utm_source=chatgpt.com

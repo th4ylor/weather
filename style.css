@@ -58,6 +58,7 @@ body{
     gap: 8px;
 
 }
+
 .count-locate{
     position: relative;
     display:inline-block ;
@@ -126,26 +127,27 @@ body{
     font-weight: bold;
 }
 
-
 .umidade{
     color: #fff;
 }
 
-.botao-ia{
-
+.botao-ia {
+    position: relative;
     border-radius: 10px;
-    width: 100%;
-    margin-top: 10px;
+    max-height: 50px;
+    width: 90%;
     padding: 12px 10px;
-    font-size: 16px;
+    font-size: 15px;
     color: rgb(255, 255, 255);
     background-color: rgb(0, 55, 59);
     border: none;  
     transition: 0.3s;
     cursor: pointer;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.685);
+    text-align:center;
+    height: 40px;
+    line-height: 40px;
 }
-
 .botao-ia:active{
     transform: scale(0.95);
     opacity: 0.9;
