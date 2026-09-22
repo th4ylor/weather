@@ -1,4 +1,3 @@
-# 1. Conecta ao banco (se não existir, ele cria o arquivo 'dados.db')
 import sqlite3
 
 conexao = sqlite3.connect("dados1.db")
@@ -79,7 +78,7 @@ while True:
     elif opcao == '4': deletar()
     elif opcao == '5': buscar_por_nome()
     elif opcao == '6': contar_usuarios()
-    elif opcao == '7': print("flw");break
+    elif opcao == '7': print("\nPrograma finalizado.");break
     
 conexao.close()
     
