@@ -1,11 +1,12 @@
 const caixahr = document.getElementById("hr-box")
-const chaveGroq = "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" //exemplo
+const chaveGroq = "gsk_QkUkSgPYviaZ7Mic43M2WGdyb3FYWrIkWWBqA7KeqiDZF9wVRT" //exemplo
 let caixa = document.querySelector(".medium-box")
 let offSetCity = 0
 
 function aplicarBackground(url) {
     document.body.style.setProperty('--bg-image', `url("${url}")`);
 }
+
 
 document.addEventListener("DOMContentLoaded", () =>{
     if (document.querySelector(".input-city").value.trim()){
@@ -22,6 +23,21 @@ async function buttonClick() {
     let endereço = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
     let respostaServidor = await fetch(endereço)
     let dadosJson = await respostaServidor.json()
+
+     //Pegando abreciaçao da cidade
+    let countryCode = dadosJson.sys.country
+    const regionname = new Intl.DisplayNames(["pt-BR"], {
+        type: "region"
+    })
+    const countryName = regionname.of(countryCode)
+
+    //Mudar nome no cabeçalho
+    const cityID = document.getElementById("cityID")
+    cityID.innerHTML = `
+        <span><img src="img/cloud.svg" class="nuvbar" style="opacity: 0.7; transform: scale(0.7); filter: invert(100%);">CLIMA EM TEMPO REAL</span>
+        <span style = " gap: 5px;">${countryName}<i class="sla2"></i>${cidade.toUpperCase()}</span>
+    `
+
 
     offSetCity = dadosJson.timezone
 
