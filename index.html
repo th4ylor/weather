@@ -7,18 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="cinemTop"></div>
+    <div class="cinemBottom"></div>
+
+
     <div class="big-box">
         <div class="search-box">
             <div class="count-locate">
                 <img src="img/locate.svg" alt="locate" class="ico-locate"">
-                <input class="input-city" type="text" placeholder="Digite o nome da cidade">
+                <input class="input-city" type="text" placeholder="Digite o nome da cidade" value="paris">
             
             </div>
             <button id="button" class="button" onclick="voiceDetection()">
-                <img src="img/microfone.svg" alt="Microfone">
+                <img src="img/microfone.svg" alt="Microfone" style="filter: invert(100%);">
             </button>
             <button id="pesquisar" class="button" onclick="buttonClick()">
-                <img src="img/lupa.svg" alt="buscar">
+                <img src="img/lupa.svg" alt="buscar" style="filter: invert(100%);">
             </button>
         </div>
         <div class="hr-box" id="hr-box">

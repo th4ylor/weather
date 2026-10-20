@@ -4,11 +4,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Manrope", sans-serif;
-}
+    font-family: "Manrope", sans-serif;}
 
 body{
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -17,37 +15,21 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image:
-    radial-gradient(circle at 20% 20%, rgba(12, 206, 255, 0.26), transparent 35%),
-    radial-gradient(circle at 80% 80%, rgba(234, 51, 179, 0.363), transparent 40%),
-    linear-gradient(
-        180deg,
-        #2d7fd06b 0%,
-        #ff00005b 60%,
-        #00ffee6c 100%
-        
-    ), url('https://loremflickr.com/1600/900/nature,landscape');
-    background-blend-mode: overlay;
-}
-
-
+    background-image: url('https://picsum.photos/1600/900');
+    background-blend-mode: overlay;}
 
 .big-box{
     position: relative;
-    background-image:
-    radial-gradient(circle at 20% 20%, rgba(12, 206, 255, 0.192), transparent 45%),
-    radial-gradient(circle at 80% 80%, rgba(234, 51, 179, 0.226), transparent 50%),
-    linear-gradient(
-        180deg,
-        #2d7fd042 10%,
-        #ff00002d 70%,
-        #00ffee3b 90%);
-    backdrop-filter: blur(3px);
-    width: 600px;
+    background-image: radial-gradient(circle, rgba(6, 3, 163, 0.11), rgba(4, 85, 161, 0.26));
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 76, 148, 0.575);
+    width: 60vw;
+    height: 75vh;
     padding: 20px;
-    border-radius: 35px;
-    box-shadow: 10px 10px 60px rgb(0, 0, 0);
-}
+    border-radius: 45px;
+    overflow: hidden;
+    transform: scale(0.8);
+    box-shadow: 10px 10px 60px rgb(0, 0, 0);}
 
 .search-box{
     border: none;
@@ -55,14 +37,11 @@ body{
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    gap: 8px;
-
-}
+    gap: 8px;}
 
 .count-locate{
     position: relative;
-    display:inline-block ;
-}
+    display:inline-block ;}
 
 .ico-locate {
   position: absolute;
@@ -71,8 +50,7 @@ body{
   transform: translateY(-50%); 
   width: 16px;        
   height: 16px;
-  filter: invert(100%);
-}
+  filter: invert(100%);}
 
 .input-city{
     border:none;
@@ -87,128 +65,87 @@ body{
     transition: all 0.4s ease;
     width: 25vw;
     padding-left: 40px;
-}
+    border: 1px solid rgba(0, 76, 148, 0.575);}
 
 .button{
-    border-radius: 20px;
+    border-radius: 26px;
     padding: 10px;
     border: none;
     background-color: #7c7c7c2b;
     cursor: pointer;
     margin-left: 5px;
     transition: all 0.4s ease;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.685);
-}
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.685);}
 
 .button:hover{
     background-color: #dadada;
-    transform: scale(1.1);
-}
+    transform: scale(1.1);}
 
 .button img{
     width: 12px;
-    height: 12px;
-}
+    height: 12px;}
 
 .medium-box{
-    margin-top: 20px;
-    padding: 10px;
-}
+    position: relative;
+    margin-top: 10px;
+    transform: scale(0.9);
+    padding: 10px; }
 
 .cidade{
     font-size: 28px;;
-    color: #fff;
-}
+    color: #fff;}
 
 .temp{
     font-size: 30px;
     color: #fff;
     margin-top: 10px;
-    font-weight: bold;
-}
+    font-weight: bold;}
 
 .umidade{
-    color: #fff;
-}
+    color: #fff;}
 
 .botao-ia {
     position: relative;
-    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 12px 10px;
+    
+    border-radius: 18px;
     max-height: 50px;
     width: 90%;
-    padding: 12px 10px;
-    font-size: 15px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(0, 55, 59);
-    border: none;  
-    transition: 0.3s;
-    cursor: pointer;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.685);
-    text-align:center;
-    height: 40px;
-    line-height: 40px;
-}
-.botao-ia:active{
-    transform: scale(0.95);
-    opacity: 0.9;
+    left: 50%;
+    transform: translateX(-50%);
 
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgba(172, 0, 0, 0.178) , rgba(0, 148, 233, 0.39));
+    border: 1px solid rgba(0, 119, 255, 0.808);  
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+    cursor: pointer;
+    box-shadow: 5px 5px 15px rgba(7, 52, 95, 0.253);
+    text-align:center;}
+
+.botao-ia:hover{
+    background: radial-gradient(circle, rgba(199, 93, 93, 0.205) , rgba(79, 164, 214, 0.562));
 }
+
+.botao-ia:active{
+    transform: translateX(-50%) scale(0.97);
+    opacity: 0.9;}
 
 .resp-ia{
     color: white;
     margin-top: 15px;
     font-size: 14px;
     line-height: 1.5;
-    text-shadow: 6px 5px 8px rgb(0, 0, 0);
-}
-
-
-body::before,
-body::after{
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.1;
-    background-repeat: no-repeat;
-    animation: nuvens 45s linear infinite;
-}
-
-body::before{
-    background-image:
-        radial-gradient(circle at 10% 15%, rgba(255,255,255,0.95) 0 9%, transparent 10%),
-        radial-gradient(circle at 25% 20%, rgba(255,255,255,0.9) 0 11%, transparent 12%),
-        radial-gradient(circle at 40% 13%, rgba(255,255,255,0.85) 0 8%, transparent 9%),
-        radial-gradient(circle at 55% 24%, rgba(255,255,255,0.88) 0 10%, transparent 11%),
-        radial-gradient(circle at 70% 16%, rgba(255,255,255,0.92) 0 9%, transparent 10%),
-        radial-gradient(circle at 85% 22%, rgba(255,255,255,0.86) 0 10%, transparent 11%),
-        radial-gradient(circle at 15% 40%, rgba(255,255,255,0.8) 0 7%, transparent 8%),
-        radial-gradient(circle at 35% 45%, rgba(255,255,255,0.78) 0 8%, transparent 9%);
-    filter: blur(5px);
-}
-
-body::after{
-    background-image:
-        radial-gradient(circle at 20% 70%, rgba(255,255,255,0.82) 0 8%, transparent 9%),
-        radial-gradient(circle at 45% 78%, rgba(255,255,255,0.84) 0 9%, transparent 10%),
-        radial-gradient(circle at 62% 72%, rgba(255,255,255,0.8) 0 8%, transparent 9%),
-        radial-gradient(circle at 80% 68%, rgba(255,255,255,0.86) 0 10%, transparent 11%),
-        radial-gradient(circle at 90% 75%, rgba(255,255,255,0.78) 0 7%, transparent 8%);
-    animation-duration: 60s;
-    opacity: 0.05;
-}
-
-@keyframes nuvens{
-    from{ transform: translateX(-25%); }
-    to{ transform: translateX(125%); }
-}
-
+    text-shadow: 6px 5px 8px rgb(0, 0, 0);}
 
 .clock{
     display: none;
     position: absolute;
-    top: 24%;
+    top: 30%;
     left: 60%;
     transform: translateX(-50%);
     width: 140px;
@@ -216,13 +153,11 @@ body::after{
     border: 2px solid rgba(255,255,255,.1);
     border-radius: 50%;
     backdrop-filter: blur(20px);
-    background: rgba(0,0,0,.2);
-}
+    background: rgba(0,0,0,.2);}
 
 .clock-img img{
     width: 100%;
-    height: 100%;
-}
+    height: 100%;}
 
 .clock::before{
     content: "";
@@ -235,114 +170,102 @@ body::after{
     height: 5px;
     background: #ffffff;
     border-radius: 50%;
-    z-index: 15;
-}
+    z-index: 15;}
 
-.clock .hours, .clock .minutes, .clock .seconds{
+.clock .hours, 
+.clock .minutes, 
+.clock .seconds{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform: rotate(0deg);}
 
-.clock.hours, .clock.hours .hr{
+.clock.hours,
+.clock.hours .hr{
     width: 120px;
-    height: 120px;
-    
-}
+    height: 120px;}
 
 .clock.minutes, .clock.minutes .min{
     width: 140px;
-    height: 140px;
-}
+    height: 140px;}
 
 .clock.seconds, .clock.seconds .sec{
     width: 160px;
-    height: 160px;
-}
+    height: 160px;}
 
-.hr, .min, .sec{
-    display: flex;
+.hr, 
+.min, 
+.sec{
+    position: absolute;
     align-content: center;
     justify-content: center;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    inset: 0;
     border-radius: 50%;
-    transform-origin: bottom center;
-    
-}
+    transform: rotate(0deg);}
 
 .hr::before{
     content: "";
     position: absolute;
-    width: 2.5px;
-    height: 17px;
-    background-color: #f00;
+    width: 2px;
+    height: 30px;
+    background-color: rgb(254, 253, 255);
     border-radius: 10px;
     z-index: 10;
     left: 50%;
     bottom: 50%;
-    transform: translateX(-50%);
-}
+    transform: translateX(-50%);}
 
 .min::before{
-
     content: "";
     position: absolute;
     width: 2px;
-    height: 26px;
-    background-color: #0f0;
+    height: 36px;
+    background-color: rgb(50, 134, 145);
     z-index: 11;
     border-radius: 8px;
     left: 50%;
     bottom: 50%;
-    transform: translateX(-50%);
-}
+    transform: translateX(-50%);}
 
 .sec::before{
     content: "";
     position: absolute;
     width: 1px;
-    height: 30px;
+    height: 40px;
     background-color: #fff;
     z-index: 12;
     border-radius: 4px;
     left: 50%;
     bottom: 50%;
-    transform: translateX(-50%);
-}
+    transform: translateX(-50%);}
 
-.big-box .hr-box {
+.hr-box {
     letter-spacing: 1px;
     position: absolute;
-    padding: 20px;
+    display: grid;
+    padding: 10px 30px;
     height: 20px;
-    width: 45%;
-    margin-left: 10px;
-    font-size:10px;
-    color: white;
+    width: 55%;
     inset: 0;
-}
+    font-size:10px;
+    color: white;}
 
-.hr-box .hora {
-    font-size: 30px;
-}
-.hr-box .dia{
-    transform: translateX(-10px);
-}
+.hora {
+    font-size: 30px;}
+.dia{
+    transform: translateX(-10px);}
 
-.hr-box .dia .calendar{
+.calendar{
     filter: invert(100%);
-    transform: scale(0.7) translate(5px, 10px);
-
-}
+    transform: scale(0.7) translate(5px, 10px);}
 
 .hora{
     letter-spacing: -1px;
-    font-size: 30px;
-}
+    font-size: 30px;}
 
 .hr-clock{
     position: absolute;
@@ -355,12 +278,25 @@ body::after{
     background: rgba(255,255,255,.08);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,.15);
-    text-align: center;
-}
+    text-align: center;}
 
 .hora2{
-
     font-size: 25px;
     color: #fff;
-    letter-spacing: -1px;
+    letter-spacing: -1px;}
+
+.cinemTop, .cinemBottom{
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 9vh;
+    z-index: 2;
+    background: #000;
+}
+
+.cinemTop{
+    top: 0;
+}
+.cinemBottom{
+    bottom: 0;
 }

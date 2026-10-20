@@ -1,10 +1,16 @@
-
+const caixahr = document.getElementById("hr-box")
 const chaveGroq = "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" //exemplo
 let caixa = document.querySelector(".medium-box")
+let offSetCity = 0
 
 function aplicarBackground(url) {
     document.body.style.setProperty('--bg-image', `url("${url}")`);
-};
+}
+
+document.addEventListener("DOMContentLoaded", () =>{
+    if (document.querySelector(".input-city").value.trim()){
+        buttonClick()
+    }})
 
 async function buttonClick() {
     const cidade = document.querySelector(".input-city").value
@@ -12,13 +18,12 @@ async function buttonClick() {
         alert("Por favor, digite o nome de uma cidade.")
     }
     
-    
     let apiKey = "f7fc4ccec2e0cc8d47fa3f418178de34"
     let endereço = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
     let respostaServidor = await fetch(endereço)
     let dadosJson = await respostaServidor.json()
-    //console.log(dadosJson)
-    let offSetCity = dadosJson.timezone
+
+    offSetCity = dadosJson.timezone
 
     caixa.innerHTML = `
         <h2  style ="font-size:30px;" class="cidade" >${dadosJson.name} </h2>
@@ -28,85 +33,86 @@ async function buttonClick() {
         <button class="botao-ia" onclick="lookSuggestion()" ><img style="filter:invert(100%); transform:scale(0.7);" src="img/camisa.svg">Sugestão de roupa <img src="img/seta.svg" style="position: absolute; left: 95%; transform: translateX(-50%); filter:invert(100%)"></button>
         <p class="resp-ia"></p>
         `
+    startClock()}
 
-    function showTime() {
-        let clock = document.getElementById("clock")
-        let hrbox = document.getElementById("hr-box")
+let clockInterval = null
 
-        //HORARIO COM FUSO 
-        const date = new Date()
-        const utc = date.getTime() + (date.getTimezoneOffset() * 60000)
-        const hourscity = new Date(utc + (offSetCity * 1000))
-        //console.log("1-"+ hourscity)
+
+
+function rotation(x,y){
+    if(x){
+        x.style.transform = `rotate(${y}deg)`
+}} 
+
+function showTime() {
+    const clock = document.getElementById("clock")
+    const hrbox = document.getElementById("hr-box")
+    const caixaclock = document.getElementById("hr-clock")
+    const hr = document.getElementById("hr")
+    const min = document.getElementById("min")
+    const sec = document.getElementById("sec")
+    //HORARIO COM FUSO 
+    let now = new Date()
+    let utc = now.getTime() + now.getTimezoneOffset() * 60000
+    let hourscity = new Date(utc + offSetCity * 1000)
+    //MUDANDO O "DISPLAY:NONE" DO CSS
+    clock.style.display = "flex"
+    hrbox.style.display = "grid"
+    //ROTAÇAO DO PONTEIRO
+    let hh = hourscity.getHours() 
+    let mm = hourscity.getMinutes()
+    let ss = hourscity.getSeconds()
+    let angHr = (hh % 12) * 30 + mm * 0.5
+    let angMin = mm * 6 + ss * 0.1
+    let angSec = ss * 6
+
+    rotation(hr, angHr)
+    rotation(min, angMin)
+    rotation(sec, angSec)
+
+
+    caixaclock.textContent = hourscity.toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"})
         
-        const caixaclock = document.getElementById("hr-clock")
-        const caixahr = document.getElementById("hr-box")
+    //MODO DE EXIBIÇÃO DAS HORAS E DATA
+    const dayweek = hourscity.toLocaleDateString("pt-BR", {
+        weekday: "long"})
 
-        const hr = document.getElementById("hr")
-        const min = document.getElementById("min")
-        const sec = document.getElementById("sec")
+    const datex = hourscity.toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric"})
 
-        //MUDANDO O "DISPLAY:NONE" DO CSS
-        clock.style.display = "flex"
-        hrbox.style.display = "grid"
-        
-        //ROTAÇAO DO PONTEIRO
-        clock = () => {
-            const now = new Date()
-            const hh = (now.getHours() % 12) + now.getMinutes() / 59
-            const mm = now.getMinutes()
-            const ss = now.getSeconds()
+    const hoursclock = hourscity.toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"})
 
-            hh *= 30
-            mm *= 6
-            ss *= 6
+    const hrnow = now.toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"})
 
-            rotation(hr, hh)
-            rotation(min, mm)
-            rotation(sec, ss)
-            setTimeout(clock,500)
-        }
-        //console.log("teste"+ clock)
+    //ADICIONANDO TEXTO NO HTML
+    caixahr.innerHTML = `
+        <p class="dia"> <img class="calendar" src="img/calendar-days.svg"> ${dayweek}, ${datex}</p>
+        <h2 class="hora">${hrnow}</h2>
+    `
+    caixaclock.innerHTML = `
+        <h2 class="hora2">${hoursclock}</h2>
+    `;}
 
-        //CRIANDO E MODIFICANDO A ROTAÇÃO NO CSS
-        rotation = (target, val) => {
-            target.style.transform = `rotate(${val}deg)`
-        }
-
-        //MODO DE EXIBIÇÃO DAS HORAS E DATA
-        const dayweek = date.toLocaleDateString("pt-br", {
-            weekday: "long"
-        })
-        //console.log("2 -"+dayweek)
-        const datex = date.toLocaleDateString("pt-BR", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric"
-        })
-        const hours = date.toLocaleTimeString("pt-BR", {
-            hour: "2-digit",
-            minute: "2-digit"
-        })
-        //console.log("4 -"+hours)
-        //let hoursclock = hourscity.toLocaleTimeString("pt-BR")
-
-        //ADICIONANDO TEXTO NO HTML
-        caixahr.innerHTML = `
-            <p class="dia"> <img class="calendar" src="img/calendar-days.svg"> ${dayweek}, ${datex}</p>
-            <h2 class="hora">${hours}</h2>
-        `
-        caixaclock.innerHTML = `
-            <h2 class="hora2">${hoursclock}</h2>
-        `;
-        window.onload = clock()
-        
+function startClock(){
+    if (clockInterval !== null) {
+        clearInterval(clockInterval)
     }
-    setInterval(showTime, 1000)
-    
-    
-}
-showTime()
-//buttonClick()
+    showTime()
+    clockInterval = setInterval(() => {
+        showTime()
+    }, 1000)}
+
 //FUNCAO DE VOZ
 function voiceDetection(){
     let recognition = new window.webkitSpeechRecognition()
@@ -117,8 +123,7 @@ function voiceDetection(){
     recognition.onresult = function (evento){
         let textTranscript = evento.results[0][0].transcript
         document.querySelector(".input-city").value = textTranscript
-        buttonClick()
-    }};
+        buttonClick()}};
 
 //FUNCAO PRA SUGESTAO DE ROUPA
 async function lookSuggestion(){
